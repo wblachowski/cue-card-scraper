@@ -24,10 +24,10 @@ You should say:
 	what volunteer work it was
 	where it was
 	why you volunteered
-and explain how you felt about it.s
+and explain how you felt about it.
 ```
 
-If the output file is a database, the cards are saved to a `cards` table, with the following structure:
+If the output is a database file, the cards are saved to the `cards` table, with the following structure:
 
 ```
 
@@ -36,7 +36,6 @@ If the output file is a database, the cards are saved to a `cards` table, with t
   Describe a website that you    You should say:   what the website is                           and explain what you liked or
   bought something from                            what you bought from this website             disliked about using this website.
                                                    how satisfied you were with what you bought
-
 ```
 
 ## Options
