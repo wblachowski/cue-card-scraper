@@ -1,3 +1,5 @@
+from asyncio.proactor_events import _ProactorBasePipeTransport
+from functools import wraps
 import asyncio
 import aiohttp
 import sqlite3
@@ -14,6 +16,21 @@ parser.add_argument('-l', '--limit', type=int, default=1000,
                     help='upper limit of cards to download')
 parser.add_argument('-o', '--output', default='output.txt',
                     help='output file')
+
+
+def silence_event_loop_closed(func):
+    @wraps(func)
+    def wrapper(self, *args, **kwargs):
+        try:
+            return func(self, *args, **kwargs)
+        except RuntimeError as e:
+            if str(e) != 'Event loop is closed':
+                raise
+    return wrapper
+
+
+_ProactorBasePipeTransport.__del__ = silence_event_loop_closed(
+    _ProactorBasePipeTransport.__del__)
 
 
 class Cue:
@@ -46,18 +63,25 @@ class Cue:
 
 
 async def call_for_hrefs(url):
-    async with aiohttp.ClientSession() as session, session.get(url=url) as response:
-        resp = await response.read()
-        pq = PyQuery(resp)
-        links = pq('.list-title a[href^="/cue-card-sample/"]')
-        hrefs = [pq(link).attr('href') for link in links]
-        return hrefs
+    try:
+        async with aiohttp.ClientSession() as session, session.get(url=url) as response:
+            resp = await response.read()
+            pq = PyQuery(resp)
+            links = pq('.list-title a[href^="/cue-card-sample/"]')
+            hrefs = [pq(link).attr('href') for link in links]
+            return hrefs
+    except Exception as ex:
+        print(f"Exception while fetching a card link: {ex}")
+        return []
 
 
 async def call_for_cues(href):
-    async with aiohttp.ClientSession() as session, session.get(url=BASE_URL+href) as response:
-        resp = await response.read()
-        return Cue.from_markup(resp)
+    try:
+        async with aiohttp.ClientSession() as session, session.get(url=BASE_URL+href) as response:
+            resp = await response.read()
+            return Cue.from_markup(resp)
+    except Exception as ex:
+        print(f"Exception while fetching a card: {ex}")
 
 
 async def get_hrefs(urls):
