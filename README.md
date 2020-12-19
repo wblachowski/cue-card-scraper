@@ -8,7 +8,7 @@ Python script for scraping cue cards from www.ielts-mentor.com website. Cue card
 $ py cards_scraper.py -l <limit> -o <output file>
 ```
 
-Card are saved either to a text file or to a SQLite database, depending on the name of the output file.
+Cards are saved either to a text file or to an SQLite database, depending on the name of the output file.
 Text output contains cue cards details separated by an empty line, for instance:
 
 ```
