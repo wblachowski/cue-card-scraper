@@ -46,6 +46,6 @@ If the output is a database file, the cards are saved to the `cards` table, with
 --limit  -l             Upper limit on the number of cards to download.
                         Default: 1000
 
---output  -o            Output file. Has to be ither a text file (*.txt) or an SQLite database file (*.db).
+--output  -o            Output file. Has to be either a text file (*.txt) or an SQLite database file (*.db).
                         Default: output.txt
 ```
