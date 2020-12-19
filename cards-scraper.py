@@ -12,7 +12,7 @@ CARDS_URL = BASE_URL + '/cue-card-sample'
 parser = argparse.ArgumentParser()
 parser.add_argument('-l', '--limit', type=int, default=1000,
                     help='upper limit of cards to download')
-parser.add_argument('-o', '--output', default='output.db',
+parser.add_argument('-o', '--output', default='output.txt',
                     help='output file')
 
 
