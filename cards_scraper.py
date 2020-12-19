@@ -15,7 +15,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('-l', '--limit', type=int, default=1000,
                     help='upper limit of cards to download')
 parser.add_argument('-o', '--output', default='output.txt',
-                    help='output file')
+                    help='output file, either a .txt or .db file')
 
 
 def silence_event_loop_closed(func):
