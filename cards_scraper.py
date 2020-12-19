@@ -131,6 +131,8 @@ def main():
     else:
         save_to_db(cues, args.output)
 
+    print(f"Successfully scraped {len(cues)} cards")
+
 
 if __name__ == "__main__":
     main()
