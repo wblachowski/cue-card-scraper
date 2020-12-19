@@ -1,6 +1,6 @@
 # Cue Cards Scraper
 
-Python script for scraping cue cards from www.ielts-mentor.com website. Cue cards are used as a speaking test at exams such as IELTS or C2 Proficiency. Each card contains a question on a given topic, along with a few hints on what the candidate should include in their answer.
+Python script for scraping cue cards from www.ielts-mentor.com website. Cue cards questions are part of a speaking test at exams such as IELTS or C2 Proficiency. Each card contains a question on a given topic, along with a few hints on what the candidate should include in their answer.
 
 ## Usage
 
