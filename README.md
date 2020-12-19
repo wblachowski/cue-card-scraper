@@ -4,8 +4,6 @@ Python script for scraping cue cards from www.ielts-mentor.com website. Cue card
 
 ## Usage
 
----
-
 ```bash
 $ py cards_scraper.py -l <limit> -o <output file>
 ```
