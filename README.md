@@ -14,6 +14,8 @@ $ py cards_scraper.py -l <limit> -o <output file>
 --help -h               Show help message and exit.
 
 --limit  -l             Upper limit on the number of cards to download.
+                        Default: 1000
 
 --output  -o            Output file. Has to be ither a text file (*.txt) or an SQLite database file (*.db).
+                        Default: output.txt
 ```
